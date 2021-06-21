@@ -1,13 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import HookCounter from "./HookCounter";
-import HookUseEffectOne from "./HookUseEffectOne";
-import HookMouse from "./HookMouse";
+import MouseContainer from "./MouseContainer";
+import IntervalClassCounter from "./IntervalClassCounter";
 
 function App() {
   return (
     <div className="App">
-      <HookMouse/>
+      <IntervalClassCounter/>
     </div>
   );
 }
