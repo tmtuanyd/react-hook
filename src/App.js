@@ -12,6 +12,8 @@ import DataFetchingOne from "./UseReducerWithFetchingData/DataFetchingOne";
 import DataFetchingTwo from "./UseReducerWithFetchingData/DataFetchingTwo";
 import ParentComponent from "./UseCallback/ParentComponent";
 import CounterMemo from "./UseMemo/CounterMemo";
+import FocusInput from "./UseRef/FocusInput";
+import Timer from "./UseRef/Timer";
 
 export const UserContext = React.createContext()
 export const ChannelContext = React.createContext()
@@ -83,6 +85,8 @@ function App() {
           </CountContext.Provider>
           <ParentComponent/>
           <CounterMemo/>
+          <FocusInput/>
+          <Timer/>
       </React.Fragment>
 
 
