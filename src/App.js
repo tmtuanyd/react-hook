@@ -10,6 +10,8 @@ import ComponentB from "./UseReducerAndUseContext/ComponentB";
 import ComponentC from "./UseReducerAndUseContext/ComponentC";
 import DataFetchingOne from "./UseReducerWithFetchingData/DataFetchingOne";
 import DataFetchingTwo from "./UseReducerWithFetchingData/DataFetchingTwo";
+import ParentComponent from "./UseCallback/ParentComponent";
+import CounterMemo from "./UseMemo/CounterMemo";
 
 export const UserContext = React.createContext()
 export const ChannelContext = React.createContext()
@@ -60,24 +62,29 @@ function App() {
     const [state, dispatch] = useReducer(reducer, initialState)
     const [stateFetch, dispatchFetch] = useReducer(reducerFetching, initialStateFetch)
   return (
-      <CountContext.Provider value={{ state, dispatch }}>
-          <FetchContext.Provider value={{stateFetch, dispatchFetch}}>
-              <div className="App">
-                  {/*<UserContext.Provider value={'TMT'}>*/}
-                  {/*    <ChannelContext.Provider value={'Codevolution'}>*/}
-                  {/*        <ComponentC/>*/}
-                  {/*    </ChannelContext.Provider>*/}
-                  {/*</UserContext.Provider>*/}
-                  {/*<CounterThree/>*/}
-                  {state.count}
-                  <ComponentA/>
-                  <ComponentB/>
-                  <ComponentC/>
-                  {/*<DataFetchingOne/>*/}
-                  <DataFetchingTwo/>
-              </div>
-          </FetchContext.Provider>
-      </CountContext.Provider>
+      <React.Fragment>
+          <CountContext.Provider value={{ state, dispatch }}>
+              <FetchContext.Provider value={{stateFetch, dispatchFetch}}>
+                  <div className="App">
+                      {/*<UserContext.Provider value={'TMT'}>*/}
+                      {/*    <ChannelContext.Provider value={'Codevolution'}>*/}
+                      {/*        <ComponentC/>*/}
+                      {/*    </ChannelContext.Provider>*/}
+                      {/*</UserContext.Provider>*/}
+                      {/*<CounterThree/>*/}
+                      {state.count}
+                      <ComponentA/>
+                      <ComponentB/>
+                      <ComponentC/>
+                      {/*<DataFetchingOne/>*/}
+                      <DataFetchingTwo/>
+                  </div>
+              </FetchContext.Provider>
+          </CountContext.Provider>
+          <ParentComponent/>
+          <CounterMemo/>
+      </React.Fragment>
+
 
   );
 }

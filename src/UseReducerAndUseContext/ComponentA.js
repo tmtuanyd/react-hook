@@ -3,7 +3,6 @@ import {CountContext} from "../App";
 
 const ComponentA = () => {
     const countContext = useContext(CountContext)
-    console.log(countContext)
     return (
         <div>
             ComponentA
