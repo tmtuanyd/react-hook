@@ -10,7 +10,6 @@ const IntervalClassCounter = () => {
     useEffect(()=>{
         const interval = setInterval(tick, 1000)
         return () => {
-            console.log('co vo day')
             clearInterval(interval)
         }
     }, [])

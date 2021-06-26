@@ -1,11 +1,21 @@
 import './App.css';
-import MouseContainer from "./MouseContainer";
-import IntervalClassCounter from "./IntervalClassCounter";
+import DataFetching from "./DataFetching";
+import ComponentC from "./UseContext/ComponentC";
+import React from 'react'
+import CounterOne from "./UseReducer/CounterOne";
+import CounterTwo from "./UseReducer/CounterTwo";
 
+export const UserContext = React.createContext()
+export const ChannelContext = React.createContext()
 function App() {
   return (
     <div className="App">
-      <IntervalClassCounter/>
+        {/*<UserContext.Provider value={'TMT'}>*/}
+        {/*    <ChannelContext.Provider value={'Codevolution'}>*/}
+        {/*        <ComponentC/>*/}
+        {/*    </ChannelContext.Provider>*/}
+        {/*</UserContext.Provider>*/}
+        <CounterTwo/>
     </div>
   );
 }
