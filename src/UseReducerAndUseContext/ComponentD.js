@@ -7,9 +7,9 @@ const ComponentD = () => {
         <div>
             ComponentD
             {/*<div>Count {countContext.countState}</div>*/}
-            <button onClick={()=>countContext.countDispatch('increment')}>Increment</button>
-            <button onClick={()=>countContext.countDispatch('decrement')}>Decrement</button>
-            <button onClick={()=>countContext.countDispatch('reset')}>Reset</button>
+            <button onClick={()=>countContext.dispatch({type: 'increment'})}>Increment</button>
+            <button onClick={()=>countContext.dispatch({type: 'decrement'})}>Decrement</button>
+            <button onClick={()=>countContext.dispatch({type: 'reset'})}>Reset</button>
         </div>
     );
 };

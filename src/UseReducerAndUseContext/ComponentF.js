@@ -6,10 +6,10 @@ const ComponentF = () => {
     return (
         <div>
             ComponentF
-            <div>Count {countContext.countState}</div>
-            <button onClick={()=>countContext.countDispatch('increment')}>Increment</button>
-            <button onClick={()=>countContext.countDispatch('decrement')}>Decrement</button>
-            <button onClick={()=>countContext.countDispatch('reset')}>Reset</button>
+            <div>Count {countContext.state.count}</div>
+            <button onClick={()=>countContext.dispatch({type: 'increment'})}>Increment</button>
+            <button onClick={()=>countContext.dispatch({type: 'decrement'})}>Decrement</button>
+            <button onClick={()=>countContext.dispatch({type: 'reset'})}>Reset</button>
         </div>
     );
 };

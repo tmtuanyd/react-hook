@@ -8,39 +8,75 @@ import CounterThree from "./UseReducer/CounterThree";
 import ComponentA from "./UseReducerAndUseContext/ComponentA";
 import ComponentB from "./UseReducerAndUseContext/ComponentB";
 import ComponentC from "./UseReducerAndUseContext/ComponentC";
+import DataFetchingOne from "./UseReducerWithFetchingData/DataFetchingOne";
+import DataFetchingTwo from "./UseReducerWithFetchingData/DataFetchingTwo";
 
 export const UserContext = React.createContext()
 export const ChannelContext = React.createContext()
 export const CountContext = React.createContext()
-const initialState = 0
+export const FetchContext = React.createContext()
+const initialState = {
+    count: 0,
+}
+const initialStateFetch = {
+    loading: true,
+    error: '',
+    post: {}
+}
+
 const reducer = (state, action) => {
-    switch (action) {
+    switch (action.type) {
         case 'increment':
-            return state + 1
+            return {...state, count: state.count + 1}
         case 'decrement':
-            return state - 1
+            return {...state, count: state.count - 1}
         case 'reset':
-            return initialState
+            return {...state, count: initialState.count}
         default:
             return state
     }
 }
+
+const reducerFetching = (state, action) => {
+    switch (action.type) {
+        case 'FETCH_SUCCESS':
+            return {
+                loading: false,
+                post: action.payload,
+                error: ''
+            }
+        case 'FETCH_ERROR':
+            return {
+                loading: false,
+                post: {},
+                error: 'Something went wrong'
+            }
+        default:
+            return state
+    }
+}
+
 function App() {
-    const [count, dispatch] = useReducer(reducer, initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const [stateFetch, dispatchFetch] = useReducer(reducerFetching, initialStateFetch)
   return (
-      <CountContext.Provider value={{countState: count, countDispatch: dispatch}}>
-          <div className="App">
-              {/*<UserContext.Provider value={'TMT'}>*/}
-              {/*    <ChannelContext.Provider value={'Codevolution'}>*/}
-              {/*        <ComponentC/>*/}
-              {/*    </ChannelContext.Provider>*/}
-              {/*</UserContext.Provider>*/}
-              {/*<CounterThree/>*/}
-              {count}
-              <ComponentA/>
-              <ComponentB/>
-              <ComponentC/>
-          </div>
+      <CountContext.Provider value={{ state, dispatch }}>
+          <FetchContext.Provider value={{stateFetch, dispatchFetch}}>
+              <div className="App">
+                  {/*<UserContext.Provider value={'TMT'}>*/}
+                  {/*    <ChannelContext.Provider value={'Codevolution'}>*/}
+                  {/*        <ComponentC/>*/}
+                  {/*    </ChannelContext.Provider>*/}
+                  {/*</UserContext.Provider>*/}
+                  {/*<CounterThree/>*/}
+                  {state.count}
+                  <ComponentA/>
+                  <ComponentB/>
+                  <ComponentC/>
+                  {/*<DataFetchingOne/>*/}
+                  <DataFetchingTwo/>
+              </div>
+          </FetchContext.Provider>
       </CountContext.Provider>
 
   );
