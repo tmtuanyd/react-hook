@@ -14,6 +14,8 @@ import ParentComponent from "./UseCallback/ParentComponent";
 import CounterMemo from "./UseMemo/CounterMemo";
 import FocusInput from "./UseRef/FocusInput";
 import Timer from "./UseRef/Timer";
+import DocTitleOne from "./CustomHook/DocTitleOne";
+import CounterCustom from "./CustomHook/CounterCustom";
 
 export const UserContext = React.createContext()
 export const ChannelContext = React.createContext()
@@ -87,6 +89,8 @@ function App() {
           <CounterMemo/>
           <FocusInput/>
           <Timer/>
+          <DocTitleOne/>
+          <CounterCustom/>
       </React.Fragment>
 
 
